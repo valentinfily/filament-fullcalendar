@@ -399,7 +399,8 @@ If you want to customize the calendar's event rendering, you can use Fullcalenda
 
 Here's an example of how you can use the `eventDidMount` hook to add a custom implementation:
 ```php
-    public function eventDidMount() {
+    public function eventDidMount(): string
+    {
         return <<<JS
             function({ event, timeText, isStart, isEnd, isMirror, isPast, isFuture, isToday, el, view }){
                 // Write your custom implementation here
@@ -484,7 +485,8 @@ protected function headerActions(): array
 You can add a tooltip to fully show the event title when the user hovers over the event via JavaScript on the `eventDidMount` method:
 
 ```php
-public function eventDidMount() {
+public function eventDidMount(): string
+{
     return <<<JS
         function({ event, timeText, isStart, isEnd, isMirror, isPast, isFuture, isToday, el, view }){
             el.setAttribute("x-tooltip", "tooltip");
