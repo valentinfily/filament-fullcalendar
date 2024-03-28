@@ -38,6 +38,7 @@
     - [Customizing actions](#customizing-actions)
     - [Authorizing actions](#authorizing-actions)
 - [Intercepting events](#intercepting-events)
+- [Render Hooks](#render-hooks)
 - [Tricks](#tricks)
   - [Editing event after drag and drop](#editing-event-after-drag-and-drop)
   - [Creating events on day selection](#creating-events-on-day-selection)
@@ -392,6 +393,25 @@ See the [InteractsWithEvents](https://github.com/saade/filament-fullcalendar/blo
 
 <br>
 
+# Render Hooks
+
+If you want to customize the calendar's event rendering, you can use Fullcalendar's built in [Render Hooks](https://fullcalendar.io/docs/event-render-hooks) for that. All the hooks are supported.
+
+Here's an example of how you can use the `eventDidMount` hook to add a custom implementation:
+```php
+    public function eventDidMount() {
+        return <<<JS
+            function({ event, timeText, isStart, isEnd, isMirror, isPast, isFuture, isToday, el, view }){
+                // Write your custom implementation here
+            }
+        JS;
+    }
+```
+
+For another example, see the [Event tooltip on hover](#event-tooltip-on-hover) trick.
+
+<br>
+
 # Tricks
 
 ## Editing event after drag and drop
@@ -423,9 +443,6 @@ You can fill the form with the selected day's date by using the `mountUsing` met
 
 ```php
 use Saade\FilamentFullCalendar\Actions\CreateAction;
-...
-...
-...
 
 protected function headerActions(): array
  {
@@ -469,13 +486,12 @@ You can add a tooltip to fully show the event title when the user hovers over th
 ```php
 public function eventDidMount() {
     return <<<JS
-        function(info){
-            info.el.setAttribute("x-tooltip", "tooltip");
-            info.el.setAttribute("x-data", "{ tooltip: '"+info.event.title+"' }");
+        function({ event, timeText, isStart, isEnd, isMirror, isPast, isFuture, isToday, el, view }){
+            el.setAttribute("x-tooltip", "tooltip");
+            el.setAttribute("x-data", "{ tooltip: '"+event.title+"' }");
         }
     JS;
 }
-
 ```
 
 The JavaScript code returned by `eventDidMount()` will be added to [the FullCalendar's `eventDidMount` event render hook](https://fullcalendar.io/docs/event-render-hooks).
