@@ -12,7 +12,7 @@ class EventData implements Arrayable
     protected int|string|null $groupId = null;
 
     protected int|string|null $resourceId = null;
-
+    
     protected ?array $resourceIds = null;
 
     protected bool $allDay = false;
@@ -34,6 +34,7 @@ class EventData implements Arrayable
     protected ?string $textColor = null;
 
     protected ?array $extendedProps = null;
+
     protected array $extraProperties = [];
 
     public static function make(): static
@@ -62,8 +63,7 @@ class EventData implements Arrayable
     }
 
     /**
-     * Events can be associated with a resource when its resourceId property matches one of
-     * the resource object’s id field
+     * Events can be associated with a resource when its resourceId property matches one of the resource object’s id field.
      */
     public function resourceId(int|string $resourceId): static
     {
