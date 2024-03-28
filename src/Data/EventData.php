@@ -12,7 +12,7 @@ class EventData implements Arrayable
     protected int|string|null $groupId = null;
 
     protected int|string|null $resourceId = null;
-    
+
     protected ?array $resourceIds = null;
 
     protected bool $allDay = false;
@@ -71,6 +71,7 @@ class EventData implements Arrayable
 
         return $this;
     }
+
     /**
      * It is also possible to associate an event with multiple resources using the resourceIds property.
      */
@@ -80,6 +81,7 @@ class EventData implements Arrayable
 
         return $this;
     }
+
     /**
      * Determines if the event is shown in the “all-day” section of relevant views. In addition,
      * if true the time text is not displayed with the event.
