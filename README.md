@@ -177,7 +177,7 @@ class CalendarWidget extends FullCalendarWidget
                         shouldOpenUrlInNewTab: true
                     )
             )
-            ->all();
+            ->toArray();
     }
 }
 ```
@@ -273,7 +273,9 @@ The locale to use when displaying texts and dates. See: [locale](https://fullcal
 `locale` (Default: `config('app.locale')`)
 
 ### plugins(`array` $plugins, `bool` $merge)
-The plugins to enable. You can add more plugins if you wish, or replace the default ones by passing `false` as the second param for the method. See: [plugins](https://fullcalendar.io/docs/plugin-index)
+The plugins to enable. You can add more plugins if you wish, or replace the default ones by passing `false` as the second param for the method. 
+Avaliable: `interaction, dayGrid, timeGrid, list, multiMonth, scrollGrid, timeline, adaptive, resource, resourceDayGrid, resourceTimeline, resourceTimeGrid, rrule, moment, momentTimezone`
+See: [plugins](https://fullcalendar.io/docs/plugin-index)
 
 `plugins` Default: `['dayGrid', 'timeGrid']`
 `merge` Default: `true`
