@@ -176,9 +176,8 @@ class CalendarWidget extends FullCalendarWidget
                         url: EventResource::getUrl(name: 'view', parameters: ['record' => $event]),
                         shouldOpenUrlInNewTab: true
                     )
-                    ->toArray()
             )
-            ->all();
+            ->toArray();
     }
 }
 ```
