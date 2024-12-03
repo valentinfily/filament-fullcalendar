@@ -18,39 +18,39 @@
 
 # Table of contents
 
-- [Filament FullCalendar](#filament-fullcalendar)
-- [Features](#features)
-- [Table of contents](#table-of-contents)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Returning events](#returning-events)
-  - [The EventData class](#the-eventdata-class)
-- [Configuration](#configuration)
-  - [Available methods](#available-methods)
-    - [schedulerLicenseKey(`string` | `null` $licenseKey)](#schedulerlicensekeystring--null-licensekey)
-    - [selectable(`bool` $selectable)](#selectablebool-selectable)
-    - [editable(`bool` $editable)](#editablebool-editable)
-    - [timezone(`string` | `null` $timezone)](#timezonestring--null-timezone)
-    - [locale(`string` | `null` $locale)](#localestring--null-locale)
-    - [plugins(`array` $plugins, `bool` $merge)](#pluginsarray-plugins-bool-merge)
-    - [config(`array` $config)](#configarray-config)
-- [Interacting with actions](#interacting-with-actions)
-    - [Customizing actions](#customizing-actions)
-    - [Authorizing actions](#authorizing-actions)
-- [Intercepting events](#intercepting-events)
-- [Render Hooks](#render-hooks)
-- [Tricks](#tricks)
-  - [Editing event after drag and drop](#editing-event-after-drag-and-drop)
-  - [Creating events on day selection](#creating-events-on-day-selection)
-  - [Creating events with additional data](#creating-events-with-additional-data)
-  - [Event tooltip on hover](#event-tooltip-on-hover)
-  - [Adding the widget to a Blade view](#adding-the-widget-to-a-blade-view)
-  - [Share your tricks](#share-your-tricks)
-- [Changelog](#changelog)
-- [Contributing](#contributing)
-- [Security Vulnerabilities](#security-vulnerabilities)
-- [Credits](#credits)
-- [License](#license)
+-   [Filament FullCalendar](#filament-fullcalendar)
+-   [Features](#features)
+-   [Table of contents](#table-of-contents)
+-   [Installation](#installation)
+-   [Usage](#usage)
+    -   [Returning events](#returning-events)
+    -   [The EventData class](#the-eventdata-class)
+-   [Configuration](#configuration)
+    -   [Available methods](#available-methods)
+        -   [schedulerLicenseKey(`string` | `null` $licenseKey)](#schedulerlicensekeystring--null-licensekey)
+        -   [selectable(`bool` $selectable)](#selectablebool-selectable)
+        -   [editable(`bool` $editable)](#editablebool-editable)
+        -   [timezone(`string` | `null` $timezone)](#timezonestring--null-timezone)
+        -   [locale(`string` | `null` $locale)](#localestring--null-locale)
+        -   [plugins(`array` $plugins, `bool` $merge)](#pluginsarray-plugins-bool-merge)
+        -   [config(`array` $config)](#configarray-config)
+-   [Interacting with actions](#interacting-with-actions)
+    -   [Customizing actions](#customizing-actions)
+    -   [Authorizing actions](#authorizing-actions)
+-   [Intercepting events](#intercepting-events)
+-   [Render Hooks](#render-hooks)
+-   [Tricks](#tricks)
+    -   [Editing event after drag and drop](#editing-event-after-drag-and-drop)
+    -   [Creating events on day selection](#creating-events-on-day-selection)
+    -   [Creating events with additional data](#creating-events-with-additional-data)
+    -   [Event tooltip on hover](#event-tooltip-on-hover)
+    -   [Adding the widget to a Blade view](#adding-the-widget-to-a-blade-view)
+    -   [Share your tricks](#share-your-tricks)
+-   [Changelog](#changelog)
+-   [Contributing](#contributing)
+-   [Security Vulnerabilities](#security-vulnerabilities)
+-   [Credits](#credits)
+-   [License](#license)
 
 <br>
 
@@ -83,6 +83,7 @@ php artisan make:filament-widget CalendarWidget
 > Don't forget to remove `protected static string $view` from the generated class!
 
 Your widget should look like this:
+
 ```php
 <?php
 
@@ -177,11 +178,7 @@ class CalendarWidget extends FullCalendarWidget
                         shouldOpenUrlInNewTab: true
                     )
             )
-<<<<<<< HEAD
-            ->all();
-=======
             ->toArray();
->>>>>>> 34f6cc5fd937af3b0c7f34c31bb0dc5c947697cf
     }
 }
 ```
@@ -252,43 +249,46 @@ class CalendarWidget extends FullCalendarWidget
 ## Available methods
 
 ### schedulerLicenseKey(`string` | `null` $licenseKey)
+
 Your [FullCalendar Premium License Key](https://fullcalendar.io/docs/premium). (Only required if you're using premium plugins)
 
 `licenceKey` (Default: `null`)
 
 ### selectable(`bool` $selectable)
+
 Allows a user to highlight multiple days or timeslots by clicking and dragging. See: [selectable](https://fullcalendar.io/docs/selectable)
 
 `selectable` (Default: `false`)
 
 ### editable(`bool` $editable)
+
 This determines if the events can be dragged and resized. See: [editable](https://fullcalendar.io/docs/editable)
 
 `editable` (Default: `false`)
 
 ### timezone(`string` | `null` $timezone)
+
 The timezone to use when displaying dates. See: [timezone](https://fullcalendar.io/docs/timeZone)
 
 `timezone` (Default: `config('app.timezone')`)
 
 ### locale(`string` | `null` $locale)
+
 The locale to use when displaying texts and dates. See: [locale](https://fullcalendar.io/docs/locale)
 
 `locale` (Default: `config('app.locale')`)
 
 ### plugins(`array` $plugins, `bool` $merge)
-<<<<<<< HEAD
-The plugins to enable. You can add more plugins if you wish, or replace the default ones by passing `false` as the second param for the method. See: [plugins](https://fullcalendar.io/docs/plugin-index)
-=======
-The plugins to enable. You can add more plugins if you wish, or replace the default ones by passing `false` as the second param for the method. 
+
+The plugins to enable. You can add more plugins if you wish, or replace the default ones by passing `false` as the second param for the method.
 Avaliable: `interaction, dayGrid, timeGrid, list, multiMonth, scrollGrid, timeline, adaptive, resource, resourceDayGrid, resourceTimeline, resourceTimeGrid, rrule, moment, momentTimezone`
 See: [plugins](https://fullcalendar.io/docs/plugin-index)
->>>>>>> 34f6cc5fd937af3b0c7f34c31bb0dc5c947697cf
 
 `plugins` Default: `['dayGrid', 'timeGrid']`
 `merge` Default: `true`
 
 ### config(`array` $config)
+
 The configuration of the calendar. Not all configurations have a dedicated fluent method to interact with it, therefore you can pass pretty much any configuration listed in the FullCalendar's TOC. See: [FullCalendar Docs](https://fullcalendar.io/docs#toc)
 
 `config` (Default: `[]`)
@@ -296,6 +296,7 @@ The configuration of the calendar. Not all configurations have a dedicated fluen
 <br>
 
 # Interacting with actions
+
 This packages leverages the power of [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to allow you to view, create, edit and delete events.
 
 To get started, you'll need to tell the widget which model it should use to perform the actions, and define a form schema for the view, create and edit actions.
@@ -408,6 +409,7 @@ See the [InteractsWithEvents](https://github.com/saade/filament-fullcalendar/blo
 If you want to customize the calendar's event rendering, you can use Fullcalendar's built in [Render Hooks](https://fullcalendar.io/docs/event-render-hooks) for that. All the hooks are supported.
 
 Here's an example of how you can use the `eventDidMount` hook to add a custom implementation:
+
 ```php
     public function eventDidMount(): string
     {
