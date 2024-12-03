@@ -1,5 +1,4 @@
 @tailwind utilities;
-  
 .filament-fullcalendar {
     --fc-small-font-size: 0.85em;
     --fc-page-bg-color: rgba(208, 208, 208, 0.3);
