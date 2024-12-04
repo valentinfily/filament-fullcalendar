@@ -19,6 +19,8 @@ class FilamentFullCalendarPlugin implements Plugin
 
     protected ?bool $editable = null;
 
+    protected ?bool $droppable = null;
+
     protected ?bool $selectable = null;
 
     public function getId(): string
@@ -116,6 +118,18 @@ class FilamentFullCalendarPlugin implements Plugin
     public function isEditable(): bool
     {
         return $this->editable ?? data_get($this->config, 'editable', false);
+    }
+
+    public function droppable(bool $droppable = true): static
+    {
+        $this->droppable = $droppable;
+
+        return $this;
+    }
+
+    public function isDroppable(): bool
+    {
+        return $this->droppable ?? data_get($this->config, 'droppable', false);
     }
 
     public function selectable(bool $selectable = true): static
